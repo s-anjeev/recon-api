@@ -1,0 +1,7 @@
+flask 
+werkzeug
+jwt 
+psutil 
+pymysql 
+flask_cors 
+flask_talisman

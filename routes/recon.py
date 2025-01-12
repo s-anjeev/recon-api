@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from werkzeug.exceptions import BadRequest
-from utils.limiter import limiter
+# from utils.limiter import limiter
 from utils.user_authentication import authentication_required
 from controller.recon_controller import ReconController
 
@@ -10,7 +10,7 @@ full_recon_bp = Blueprint('fullrecon', __name__)
 # apply rate limit to specific Blueprint routes
 @full_recon_bp.route('/api/recon/start', methods=["POST"])
 @authentication_required
-@limiter.limit("5 per minute")
+# @limiter.limit("5 per minute")
 def full_recon():
     # get the authorization header
     auth_header = request.headers.get('Authorization')
@@ -71,7 +71,7 @@ recon_bp = Blueprint('recon', __name__)
 # apply rate limit to specific Blueprint routes
 @recon_bp.route('/api/recon/tool', methods=["POST"])
 @authentication_required
-@limiter.limit("5 per minute")
+# @limiter.limit("5 per minute")
 def recon():
     try:
         data = request.get_json(force=True) # Ensure JSON parsing even if content-type isn't set correctly

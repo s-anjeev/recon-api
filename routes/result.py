@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from utils.limiter import limiter
+# from utils.limiter import limiter
 from controller.results_controller import FileReader, FileLister
 
 # creating the result blueprint 
@@ -7,7 +7,7 @@ result_bp = Blueprint('result',__name__)
 
 # apply rate limit to specific Blueprint routes
 @result_bp.route('/api/recon/results/<output_file>', methods=["GET"])
-@limiter.limit('10 per minute')
+# @limiter.limit('10 per minute')
 def get_results(output_file):
     try:
         reader = FileReader(output_directory="output")  # Specify the output folder
@@ -25,7 +25,7 @@ all_result_bp = Blueprint('all result',__name__)
 
 # apply rate limit to specific Blueprint routes
 @all_result_bp.route('/api/recon/results/all', methods=["GET"])
-@limiter.limit('10 per minute')
+# @limiter.limit('10 per minute')
 def get_all_results():
     try:
         lister = FileLister(output_directory="output")  # Specify the output directory if needed

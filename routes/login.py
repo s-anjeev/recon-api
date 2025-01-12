@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from werkzeug.exceptions import BadRequest
 from controller.login_controller import LoginController
 from controller.logout_controller import    LogoutController
-from utils.limiter import limiter  # Import the limiter from extensions.py
+# from utils.limiter import limiter  # Import the limiter from extensions.py
 from utils.user_authentication import authentication_required
 
 
@@ -11,7 +11,7 @@ login_bp = Blueprint('login', __name__)
 
 # Apply rate limiting to specific Blueprint routes
 @login_bp.route('/login', methods=["POST"])
-@limiter.limit("5 per 5 minutes")
+# @limiter.limit("5 per 5 minutes")
 def login():
     # Attempt to parse JSON data from the request body
     try:
@@ -52,7 +52,7 @@ logout_bp = Blueprint('logout', __name__)
 
 # Apply rate limiting to specific Blueprint routes
 @logout_bp.route('/logout', methods=["GET"])
-@limiter.limit("5 per 5 minutes")
+# @limiter.limit("5 per 5 minutes")
 @authentication_required
 def logout():
     try:

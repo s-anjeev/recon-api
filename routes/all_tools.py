@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from utils.limiter import limiter  # Import the limiter from extensions.py
+# from utils.limiter import limiter  # Import the limiter from extensions.py
 from utils.user_authentication import authentication_required
 from controller.all_tools_controller import AllTollsController
 
@@ -9,7 +9,7 @@ getall_bp = Blueprint('get all tools', __name__)
 # apply rate limit to specific Blueprint routes 
 @getall_bp.route('/api/recon/get_all_tools', methods=["GET"])
 @authentication_required
-@limiter.limit('10 per minute')
+# @limiter.limit('10 per minute')
 def all_tools():
     try:
         # get the authorization header

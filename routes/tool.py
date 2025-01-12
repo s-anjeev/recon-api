@@ -6,14 +6,14 @@
 
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import BadRequest
-from utils.limiter import limiter
+# from utils.limiter import limiter
 # from controller.tool_controller import ToolController
 
 # create the blueprint
 tool_bp = Blueprint('tool',__name__)
 
 @tool_bp.route('/api/tool', methods=["POST"])
-@limiter.limit("5 per 5 minutes")
+# @limiter.limit("5 per 5 minutes")
 def tool():
 
     try:
